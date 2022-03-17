@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-i-oass(559zhi#-3g(p$ot5x=kf!w-qj(2_a-*g__l%7)21aqd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['rembe.azurewebsites.net']
+ALLOWED_HOSTS = ['rembe.azurewebsites.net','127.0.0.1']
 
 
 # Application definition
