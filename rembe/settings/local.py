@@ -1,6 +1,8 @@
 import environ
 
-env = environ.Env()
+env = environ.Env(
+    GH_ACTIONS=(bool, False)
+)
 environ.Env.read_env()
 
 SECRET_KEY = 'django-insecure-i-oass(559zhi#-3g(p$ot5x=kf!w-qj(2_a-*g__l%7)21aqd'
@@ -17,3 +19,15 @@ DATABASES = {
         'PORT': env('DATABASE_PORT'),
     }
 }
+
+if env('GH_ACTIONS'):
+    from pathlib import Path
+
+    BASE_DIR = Path(__file__).resolve().parent.parent
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }

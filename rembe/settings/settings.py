@@ -125,7 +125,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-if (DEBUG):
+if DEBUG:
     from rembe.settings.local import *
 else:
     from rembe.settings.prod import *
