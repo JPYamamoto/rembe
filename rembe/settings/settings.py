@@ -25,13 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD:rembe/settings.py
-ALLOWED_HOSTS = ['rembe.azurewebsites.net','127.0.0.1']
-=======
 ALLOWED_HOSTS = ['rembe.azurewebsites.net',]
 
 ENV_ALLOWED_HOSTS = []
->>>>>>> main:rembe/settings/settings.py
 
 
 # Application definition
@@ -43,16 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD:rembe/settings.py
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
-=======
     'rembe',
->>>>>>> main:rembe/settings/settings.py
 ]
 
 SITE_ID = 1
@@ -140,7 +133,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-<<<<<<< HEAD:rembe/settings.py
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
@@ -159,7 +151,7 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_LOGOUT_ON_GET = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-=======
+
 if DEBUG:
     from rembe.settings.local import *
 else:
@@ -167,4 +159,3 @@ else:
 
 if (ENV_ALLOWED_HOSTS):
     ALLOWED_HOSTS += ENV_ALLOWED_HOSTS
->>>>>>> main:rembe/settings/settings.py
