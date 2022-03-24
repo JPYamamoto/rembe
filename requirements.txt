@@ -5,6 +5,7 @@ charset-normalizer==2.0.12
 cryptography==36.0.2
 defusedxml==0.7.1
 Django==4.0.3
+<<<<<<< HEAD
 django-allauth==0.49.0
 django-crispy-forms==1.14.0
 idna==3.3
@@ -14,5 +15,9 @@ PyJWT==2.3.0
 python3-openid==3.2.0
 requests==2.27.1
 requests-oauthlib==1.3.1
+=======
+django-environ==0.8.1
+psycopg2==2.9.3
+>>>>>>> main
 sqlparse==0.4.2
 urllib3==1.26.9
