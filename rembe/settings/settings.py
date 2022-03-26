@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
-    'rembe',
+    'core',
 ]
 
 SITE_ID = 1
