@@ -32,6 +32,12 @@ jobs:
         push: true
         tags: rembe.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f5ffef2cc4c247efb02ec2807479d1f7 }}/rembe:${{ github.sha }}
         file: ./Dockerfile
+        build-args: |
+            database_name=${{ secrets.DATABASE_NAME }}
+            database_user=${{ secrets.DATABASE_USER }}
+            database_pass=${{ secrets.DATABASE_PASS }}
+            database_host=${{ secrets.DATABASE_HOST }}
+            database_port=${{ secrets.DATABASE_PORT }}
 
   deploy:
     runs-on: ubuntu-latest
