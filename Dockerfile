@@ -13,6 +13,18 @@ RUN pip install -r ./requirements.txt --no-cache-dir
 
 COPY . .
 
+ARG database_name
+ARG database_user
+ARG database_pass
+ARG database_host
+ARG database_port
+
+ENV DATABASE_NAME $database_name
+ENV DATABASE_USER $database_user
+ENV DATABASE_PASS $database_pass
+ENV DATABASE_HOST $database_host
+ENV DATABASE_PORT $database_port
+
 RUN python ./manage.py migrate --noinput
 
 EXPOSE 8000
