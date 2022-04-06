@@ -1,11 +1,15 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
+User=get_user_model()
 
 class Tarjeta(models.Model):
     nombre_tarjeta = models.CharField(max_length=50)
     fecha_vencimiento = models.DateTimeField(null=True)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    collaborators = models.ManyToManyField(User, related_name="collaborators")
 
     def __str__(self):
         return self.nombre_tarjeta
