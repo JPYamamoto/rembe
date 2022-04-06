@@ -50,6 +50,19 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '1061043658878-gcg95iq9qgpaaefsrds1npu8rhoijehj.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
