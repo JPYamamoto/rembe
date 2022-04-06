@@ -9,16 +9,6 @@ SECRET_KEY = 'django-insecure-i-oass(559zhi#-3g(p$ot5x=kf!w-qj(2_a-*g__l%7)21aqd
 
 ENV_ALLOWED_HOSTS = ['localhost',]
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'APP': {
-            'client_id': env('GOOGLE_CLIENT_ID'),
-            'secret': env('GOOGLE_SECRET'),
-            'key': ''
-        }
-    }
-}
-
 if env('GH_ACTIONS'):
     from pathlib import Path
 
@@ -39,5 +29,15 @@ else:
             'PASSWORD': env('DATABASE_PASS'),
             'HOST': env('DATABASE_HOST'),
             'PORT': env('DATABASE_PORT'),
+        }
+    }
+
+    SOCIALACCOUNT_PROVIDERS = {
+        'google': {
+            'APP': {
+                'client_id': env('GOOGLE_CLIENT_ID'),
+                'secret': env('GOOGLE_SECRET'),
+                'key': ''
+            }
         }
     }
