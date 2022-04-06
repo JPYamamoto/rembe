@@ -15,3 +15,13 @@ DATABASES = {
         'PORT': env('DATABASE_PORT'),
     }
 }
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': env('GOOGLE_CLIENT_ID'),
+            'secret': env('GOOGLE_SECRET'),
+            'key': ''
+        }
+    }
+}
