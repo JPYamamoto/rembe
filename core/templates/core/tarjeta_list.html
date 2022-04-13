@@ -1,13 +1,26 @@
-<ul>
-    <!-- Iterate over object_list -->
-    {% for object in object_list %}
-    <!-- Display Objects -->
-    <li>{{ object.NombreTarjeta }}</li>
-    <li>{{ object.FechaVencimiento }}</li>
- 
-    <hr/>
-    <!-- If objet_list is empty  -->
-    {% empty %}
-    <li>No objects yet.</li>
-    {% endfor %}
-</ul>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/style_pretty_cards.css' %}">
+
+{% block content %}
+    <div class="container center">
+        {% for object in object_list %}
+            <div class="card">
+                <h2>{{ object.nombre_tarjeta }}</h2>
+                <hr>
+                <div class="date">
+                    <div class="row">
+                        <div class="column">
+                            <p>fecha ultima vez modificada</p>
+                        </div>
+                        <div class="column">
+                            <p style="text-align: right;">Fecha de vencimiento: {{ object.fecha_vencimiento }}</p>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <p>Card body</p>
+                <button type="submit">Reverso</button>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

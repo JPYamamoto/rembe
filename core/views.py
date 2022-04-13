@@ -7,7 +7,7 @@ from core.models import Tarjeta, CuerpoTarjeta
 
 
 class TarjetaView(ListView):
-    model = Tarjeta
+    queryset = Tarjeta.objects.all()
     
 class CuerpoTarjetaView(ListView):
-    model = CuerpoTarjeta
+    queryset = CuerpoTarjeta.objects.all()
