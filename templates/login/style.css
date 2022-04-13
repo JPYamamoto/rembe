@@ -1,0 +1,78 @@
+.Login_page {
+    margin: 0 auto;
+    width: 65%;
+    min-height: 100%;
+}
+
+img.Rembe_Logo {
+    display: block;
+    margin: 0 auto;
+    width: 40vh;
+}
+
+h1.Welcome_msg {
+    margin-top: 0;
+    margin-bottom: 2vh;
+    text-align: center;
+}
+
+button.Login {
+    display: block;
+    margin: 0 auto;
+}
+
+button.SingIn {
+    display: block;
+    margin: 0 auto;
+}
+
+hr.Separador {
+    margin: 2vh auto;
+    width: 35%;
+}
+
+.acceso {
+    margin-top: 8vh;
+}
+
+img.Ciencias_Logo {
+    display: block;
+    margin: 0 auto;
+    width: 30vh;
+}
+
+p.restriccion {
+    text-align: center;
+    color: rgba(169, 169, 169, 0.95);
+    font-size: medium;
+}
+
+button.Login {
+    color: white;
+    background-color: rgb(131, 15, 40);
+    padding: 1vh 5vw;
+    border: 2px solid white;
+    border-radius: 4px;
+    box-shadow: 4px 4px;
+}
+
+button.Login:hover {
+    color: rgba(131, 15, 40);
+    background-color: white;
+    border: 2px solid rgb(131, 15, 40);
+}
+
+button.SingIn {
+    color: black;
+    background-color: rgb(164, 164, 164);
+    padding: 1vh 4vw;
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+button.SingIn:hover {
+    color: black;
+    background-color: white;
+    border: 2px solid rgb(164, 164, 164);
+    box-shadow: 4px 4px rgb(164, 164, 164);
+}

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@100&family=Inconsolata&family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@100&family=Inconsolata&family=Roboto+Slab&display=swap');
+:root {
+    --important-text-color: rgb(73, 73, 71);
+    --text-color: black;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Bitter', serif;
+    font-family: 'Inconsolata', monospace;
+    font-family: 'Roboto Slab', serif;
+    color: var(--important-text-color);
+    font-size: 7vh;
+}
+
+button {
+    font-family: 'Bitter', serif;
+    font-family: 'Inconsolata', monospace;
+    font-family: 'Roboto Slab', serif;
+    font-size: 2vh;
+    color: var(--text-color)
+}
+
+h4,
+h5,
+h6,
+p {
+    font-family: 'Bitter', serif;
+    font-family: 'Inconsolata', monospace;
+    font-family: 'Roboto Slab', serif;
+    color: var(--text-color)
+}
