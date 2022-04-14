@@ -162,6 +162,8 @@ ACCOUNT_LOGOUT_ON_GET = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+ACCOUNT_ADAPTER='rembe.adapter.RestrictEmailAdapter'
+
 if DEBUG:
     from rembe.settings.local import *
 else:
