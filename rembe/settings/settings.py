@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
+    'channels',
+    'reversion',
     'core',
 ]
 
@@ -89,6 +91,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rembe.wsgi.application'
+ASGI_APPLICATION = 'rembe.asgi.application'
 
 
 # Database
@@ -161,6 +164,8 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_LOGOUT_ON_GET = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+ACCOUNT_ADAPTER='rembe.adapter.RestrictEmailAdapter'
 
 if DEBUG:
     from rembe.settings.local import *

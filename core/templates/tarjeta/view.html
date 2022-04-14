@@ -1,0 +1,24 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/style_pretty_cards.css' %}">
+
+{% block content %}
+    <div class="container center">
+        <div class="card">
+            <h2>{{ object.nombre }}</h2>
+            <hr>
+            <div class="date">
+                <div class="row">
+                    <div class="column">
+                        <p>Última modificación: {{ object.fecha_modificacion }}</p>
+                    </div>
+                    <div class="column">
+                        <p style="text-align: right;">Fecha de vencimiento: {{ object.fecha_vencimiento }}</p>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <p>{{ object.contenido }}</p>
+            <button type="submit">Reverso</button>
+        </div>
+    </div>
+{% endblock %}
