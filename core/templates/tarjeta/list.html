@@ -3,22 +3,22 @@
 
 {% block content %}
     <div class="container center">
-        {% for object in object_list %}
+        {% for tarjeta in object_list %}
             <div class="card">
-                <h2>{{ object.nombre_tarjeta }}</h2>
+                <h2>{{ tarjeta.nombre }}</h2>
                 <hr>
                 <div class="date">
                     <div class="row">
                         <div class="column">
-                            <p>fecha ultima vez modificada</p>
+                            <p>Última modificación: {{ tarjeta.fecha_modificacion }}</p>
                         </div>
                         <div class="column">
-                            <p style="text-align: right;">Fecha de vencimiento: {{ object.fecha_vencimiento }}</p>
+                            <p style="text-align: right;">Fecha de vencimiento: {{ tarjeta.fecha_vencimiento }}</p>
                         </div>
                     </div>
                 </div>
                 <hr/>
-                <p>Card body</p>
+                <p>{{ tarjeta.contenido }}</p>
                 <button type="submit">Reverso</button>
             </div>
         {% endfor %}
