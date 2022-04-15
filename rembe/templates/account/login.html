@@ -1,0 +1,55 @@
+{% load static %}
+{% load i18n %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html>
+    
+<head>
+    
+    <title>Rembe - Inicio</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'login/images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href=" {% static 'login/images/favicon/favicon-16x16.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style/login-style.css' %}">
+    <link rel="stylesheet" type="text/css"  href= "{% static 'login/style/fonts-style.css' %}">
+</head>
+
+<body>
+    <main>
+        <div class="Login_page">
+            <img class="Rembe_Logo" alt="Logo de rembe" src="{% static 'login/images/rembe_logo.png' %}" width="400">
+            <h1 class="Welcome_msg">¡Bienvenido!</h1>
+            <form class="LoginForm" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                
+                <button class="primaryAction Login" type="submit">Inicia Sesion</button>
+            </form>
+
+            <form action="{% provider_login_url 'google' %}"  class="Login">
+                <button class="Login" type="submit" value="login in account">Inicia Sesión con Google</button>
+                
+            </form>
+            <p class="ForgotPassword" >
+                <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            <p>
+            <hr class="Separador">
+
+            <form action="{{ signup_url }}"  class="CreateAccount">
+                <button class="SingIn" type="submit" value="create account">Crea una cuenta</button>
+            </form>
+
+            <div class="acceso">
+                <p class="restriccion">Disponible solo para miembros de</p>
+                <a href="https://www.fciencias.unam.mx/" target="_blank">
+                    <img class="Ciencias_Logo" alt="Escudo De La Facultad de Ciencias" src="{% static 'login/images/facultad_ciencias_logo.png' %}" width="200">
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+

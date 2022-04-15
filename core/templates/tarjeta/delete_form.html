@@ -1,16 +1,16 @@
 <head>
-  {% load static %}
-  <title>Eliminar {{ object }}</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'core/css/tarjetas_form.css' %}">
-  </head>
-  
-  <body>
-  <div class="main">
-    <form method="post">
-      {% csrf_token %}
-      <p>Se eliminará permanentemente la tarjeta "{{ object.nombre }}".</p>
-      <p>¿Deseas continuar?</p>
-      <input type="submit" value="Confirmar" class="button red">
-    </form>
-  </div>
-  </body>
+{% load static %}
+<title>Eliminar {{ object }}</title>
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/tarjetas_form.css' %}">
+</head>
+
+<body>
+<div class="main">
+  <form method="post">
+    {% csrf_token %}
+    <p>Se eliminará permanentemente la tarjeta "{{ object.nombre }}".</p>
+    <p>¿Deseas continuar?</p>
+    <input type="submit" value="Confirmar" class="button red">
+  </form>
+</div>
+</body>

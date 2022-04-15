@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['rembe.azurewebsites.net',]
+ALLOWED_HOSTS = ['rembe.azurewebsites.net', 'https://rembe.azurewebsites.net',]
+CSRF_TRUSTED_ORIGINS = ['https://rembe.azurewebsites.net',]
 
 ENV_ALLOWED_HOSTS = []
 
