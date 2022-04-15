@@ -1,5 +1,30 @@
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+<head>
+    {% load static %}
+    <title>Eliminar {{ object }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/tarjetas_form.css' %}">
+    </head>
+    
+    <body>
+        <div class="main">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Nombre</label>
+                    {{ form.nombre }}
+                </div>
+                <div class="form-group">
+                    <label>Fecha de Vencimiento</label>
+                    {{ form.fecha_vencimiento }}
+                </div>
+                <div class="form-group">
+                    <label>Contenido</label>
+                    {{ form.contenido }}
+                </div>
+                <div class="form-group">
+                    <label>Contenido al reverso</label>
+                    {{ form.contenido_reverso }}
+                </div>
+                <input type="submit" value="Guardar" class="button green">
+            </form>
+        </div>
+    </body>
