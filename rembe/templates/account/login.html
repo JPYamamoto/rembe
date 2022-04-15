@@ -18,13 +18,29 @@
         <div class="Login_page">
             <img class="Rembe_Logo" alt="Logo de rembe" src="{% static 'login/images/rembe_logo.png' %}" width="400">
             <h1 class="Welcome_msg">¡Bienvenido!</h1>
-            <form action="{% provider_login_url 'google' %}"  class="Login">
-                <button class="Login" type="submit" value="login in account">Inicia Sesión</button>
+            <form class="LoginForm" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                
+                <button class="primaryAction Login" type="submit">Inicia Sesion</button>
             </form>
+
+            <form action="{% provider_login_url 'google' %}"  class="Login">
+                <button class="Login" type="submit" value="login in account">Inicia Sesión con Google</button>
+                
+            </form>
+            <p class="ForgotPassword" >
+                <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            <p>
             <hr class="Separador">
+
             <form action="{{ signup_url }}"  class="CreateAccount">
                 <button class="SingIn" type="submit" value="create account">Crea una cuenta</button>
             </form>
+
             <div class="acceso">
                 <p class="restriccion">Disponible solo para miembros de</p>
                 <a href="https://www.fciencias.unam.mx/" target="_blank">
