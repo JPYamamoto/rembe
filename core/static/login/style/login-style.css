@@ -22,6 +22,7 @@ h1.Welcome_msg {
     margin-top: 0;
     margin-bottom: 2vh;
     text-align: center;
+    font-size: 7vh;
 }
 
 button.Login {
@@ -54,6 +55,10 @@ p.restriccion {
     text-align: center;
     color: rgba(169, 169, 169, 0.95);
     font-size: medium;
+}
+
+button {
+    font-size: 2vh;
 }
 
 button.Login {

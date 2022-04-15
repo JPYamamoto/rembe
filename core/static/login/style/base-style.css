@@ -1,0 +1,77 @@
+:root {
+    --border-chungus: 3px;
+    --bg-color: white;
+    --primary-color: rgb(131, 15, 40);
+    --secondary-color: rgba(169, 169, 169, 0.95);
+    --dark-text-color: black;
+    --clear-text-color: white;
+}
+
+.MenuSuperior {
+    margin: 0;
+    background: rgb(235, 235, 235, 0.5);
+    display: flex;
+    min-width: 100%;
+    align-items: center;
+}
+
+.Marca {
+    display: inline-block;
+}
+
+img.RembeLogoMenu {
+    display: inline-block;
+    width: 7%;
+}
+
+h2.NombreMarca {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 2vh;
+    color: var(--primary-color);
+}
+
+
+/*Seccion derecha del menu*/
+
+ul.Opciones {
+    display: flex;
+    margin-left: auto;
+    margin-right: 2vw;
+}
+
+li.nav {
+    display: inline-block;
+    margin: 0 1vw;
+}
+
+.Marca a {
+    text-decoration: none;
+}
+
+.nav a {
+    white-space: nowrap;
+    text-decoration: none;
+    border-bottom: var(--border-chungus) solid var(--secondary-color);
+    padding-bottom: 1vh;
+}
+
+.nav a:visited {
+    color: var(--secondary-color);
+}
+
+.nav a:hover,
+.nav a:focus {
+    color: var(--primary-color);
+    border-top-right-radius: 10px;
+    border-bottom: var(--border-chungus) solid var(--primary-color);
+}
+
+
+/*Contenedor de contenido centrado*/
+
+.CenterContainer {
+    margin: 0 auto;
+    width: 65%;
+    min-height: 100%;
+}

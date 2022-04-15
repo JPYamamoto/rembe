@@ -1,14 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{% block head_title %}{% endblock %}</title>
-    {% block extra_head %}
-    {% endblock %}
+    <title>Rembe - {% block head_title %}{% endblock %}</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'login/images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href=" {% static 'login/images/favicon/favicon-16x16.png' %}">
+    <link rel="stylesheet" type="text/css"  href= "{% static 'login/style/fonts-style.css' %}">
+    <link rel="stylesheet" type="text/css"  href= "{% static 'login/style/base-style.css' %}">
   </head>
   <body>
     {% block body %}
 
-    {% if messages %}
+    {% comment %} {% if messages %}
     <div>
       <strong>Messages:</strong>
       <ul>
@@ -17,24 +20,28 @@
         {% endfor %}
       </ul>
     </div>
-    {% endif %}
-
-    <div>
-      <strong>Menu:</strong>
-      <ul>
+    {% endif %} {% endcomment %}
+    <header class="MenuSuperior">
+      <div class = "Marca">
+        <a href="{% url 'account_login' %}">
+          <img class="RembeLogoMenu" alt="Logo de rembe" src="{% static 'login/images/logo_sin_fondo.png' %}" width="50">
+          <h2 class="NombreMarca">Rembe</h2>
+        </a>
+      </div>
+      <ul class = "Opciones">
         {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+        <li class= "nav"><a href="{% url 'account_email' %}">Change E-mail</a></li>
+        <li class= "nav"><a href="{% url 'account_logout' %}">Sign Out</a></li>
         {% else %}
-        <li><a href="{% url 'account_login' %}">Sign In</a></li>
-        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+        <li class= "nav"><a href="{% url 'account_login' %}">Sign In</a></li>
+        <li class= "nav"><a href="{% url 'account_signup' %}">Sign Up</a></li>
         {% endif %}
-      </ul>
-    </div>
-    {% block content %}
-    {% endblock %}
-    {% endblock %}
-    {% block extra_body %}
-    {% endblock %}
+      </u1>
+    </header>
+      {% block content %}
+      {% endblock %}
+      {% endblock %}
+      {% block extra_body %}
+      {% endblock %}
   </body>
 </html>
