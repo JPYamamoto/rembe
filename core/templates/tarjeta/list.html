@@ -1,26 +1,54 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'core/style_pretty_cards.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/lista_tarjetas.css' %}">
+
+
 
 {% block content %}
-    <div class="container center">
+{% if object_list %}
+    <div class="table-users">
+    <div class="header">Tus tarjetas</div>
+    
+    <table cellspacing="0">
+        <tr>
+            <th>Nombre</th>
+            <th>Fecha de vencimiento</th>
+            <th>Última modificación</th>
+            <th> </th>
+            <th> </th>
+            <th> </th>
+
+        </tr>
+
+        
         {% for tarjeta in object_list %}
-            <div class="card">
-                <h2>{{ tarjeta.nombre }}</h2>
-                <hr>
-                <div class="date">
-                    <div class="row">
-                        <div class="column">
-                            <p>Última modificación: {{ tarjeta.fecha_modificacion }}</p>
-                        </div>
-                        <div class="column">
-                            <p style="text-align: right;">Fecha de vencimiento: {{ tarjeta.fecha_vencimiento }}</p>
-                        </div>
-                    </div>
-                </div>
-                <hr/>
-                <p>{{ tarjeta.contenido }}</p>
-                <button type="submit">Reverso</button>
-            </div>
+            <tr>
+                <td> {{ tarjeta.nombre }} </td>
+                <td> {{ tarjeta.fecha_vencimiento|date:"SHORT_DATE_FORMAT" }}</td>
+                <td> {{ tarjeta.fecha_modificacion }}</td>
+                <td><a href="{% url 'tarjetas:edit' tarjeta.pk %}">Modificar</a></td>
+                <td><a href="{% url 'tarjetas:delete' tarjeta.pk %}">Eliminar</a></td>
+                <td><a href="{% url 'tarjetas:view' tarjeta.pk %}">Mostrar</a></td>
+            </tr>
+            
+            
         {% endfor %}
+
+        
+    </table>
+
+    <a href="{% url 'tarjetas:create' %}">
+        <button type="button" class="fill">Crear nueva tarjeta</button>
+    </a>
     </div>
+
+{% else %}
+    <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
+        <h3>Parece que no tienes ninguna tarjeta creada.</h3>
+        <a href="{% url 'tarjetas:create' %}">
+            <button type="button" class="fill">¡Crea tu primera tarjeta!</button>
+        </a>
+    </div>
+{% endif %}
+
+
 {% endblock %}

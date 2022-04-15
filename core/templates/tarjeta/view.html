@@ -1,5 +1,5 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'core/style_pretty_cards.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/style_pretty_cards.css' %}">
 
 {% block content %}
     <div class="container center">
@@ -12,7 +12,7 @@
                         <p>Última modificación: {{ object.fecha_modificacion }}</p>
                     </div>
                     <div class="column">
-                        <p style="text-align: right;">Fecha de vencimiento: {{ object.fecha_vencimiento }}</p>
+                        <p style="text-align: right;">Fecha de vencimiento: {{ object.fecha_vencimiento|date:"SHORT_DATE_FORMAT" }}</p>
                     </div>
                 </div>
             </div>
@@ -21,4 +21,11 @@
             <button type="submit">Reverso</button>
         </div>
     </div>
+
+    <a href="{% url 'tarjetas:index' %}">
+        <button type="button" class="slide">
+            <div>Regresar al menú</div>
+            <i class="icon-arrow-right"></i>
+        </button>
+    </a>
 {% endblock %}
