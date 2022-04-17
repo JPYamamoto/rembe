@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from core.views import profile
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('tarjetas/', include('core.urls', namespace='tarjetas')),
+    path('accounts/profile/', profile),
     # path('tarjeta/', TarjetaView.as_view()),
 ]
