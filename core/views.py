@@ -59,3 +59,6 @@ class EliminarTarjeta(LoginRequiredMixin, RevisionMixin, DeleteView):
     model = Tarjeta
     template_name = 'tarjeta/delete_form.html'
     success_url = reverse_lazy('tarjetas:index')
+
+def profile(request):
+    return render(request, 'accounts/profile.html')
