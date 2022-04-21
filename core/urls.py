@@ -1,12 +1,12 @@
 from django.urls import path, reverse_lazy
 
-from core import views
+from core.views  import tarjeta, error
 
 app_name = 'core'
 urlpatterns = [
-    path('', views.ListarTarjeta.as_view(), name='index'),
-    path('create/', views.CrearTarjeta.as_view(), name='create'),
-    path('edit/<pk>/', views.EditarTarjeta.as_view(), name='edit'),
-    path('delete/<pk>/', views.EliminarTarjeta.as_view(), name='delete'),
-    path('view/<pk>/', views.VerTarjeta.as_view(), name='view'),
+    path('', tarjeta.ListarTarjeta.as_view(), name='index'),
+    path('create/', tarjeta.CrearTarjeta.as_view(), name='create'),
+    path('edit/<pk>/', tarjeta.EditarTarjeta.as_view(), name='edit'),
+    path('delete/<pk>/', tarjeta.EliminarTarjeta.as_view(), name='delete'),
+    path('view/<pk>/', tarjeta.VerTarjeta.as_view(), name='view'),
 ]
