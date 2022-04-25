@@ -1,7 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.utils import timezone
-from django.urls import reverse_lazy, resolve
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
@@ -9,8 +7,6 @@ from reversion.views import RevisionMixin
 
 from core.models import Tarjeta
 from core.forms import TarjetaForm
-
-# Create your views here.
 
 
 class ListarTarjeta(LoginRequiredMixin, ListView):
@@ -41,6 +37,7 @@ class CrearTarjeta(LoginRequiredMixin, RevisionMixin, CreateView):
         form.instance.fecha_modificacion = timezone.now()
         return super(CrearTarjeta, self).form_valid(form)
 
+
 class EditarTarjeta(LoginRequiredMixin, RevisionMixin, UpdateView):
     login_url = '/accounts/login'
     model = Tarjeta
@@ -54,11 +51,9 @@ class EditarTarjeta(LoginRequiredMixin, RevisionMixin, UpdateView):
     def get_success_url(self, **kwargs):
         return reverse_lazy('tarjetas:view', args=(self.object.id, ))
 
+
 class EliminarTarjeta(LoginRequiredMixin, RevisionMixin, DeleteView):
     login_url = '/accounts/login'
     model = Tarjeta
     template_name = 'tarjeta/delete_form.html'
     success_url = reverse_lazy('tarjetas:index')
-
-def profile(request):
-    return render(request, 'accounts/profile.html')
