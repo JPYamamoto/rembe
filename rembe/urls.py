@@ -19,9 +19,11 @@ from django.urls import path, include
 
 
 from core.views.profile import profile
-
+from core.views.home import home
 
 urlpatterns = [
+
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('tarjetas/', include('core.urls', namespace='tarjetas')),

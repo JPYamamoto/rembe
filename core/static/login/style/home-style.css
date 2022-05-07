@@ -1,0 +1,123 @@
+* {
+    background-color: var(--bg-color);
+}
+
+.full-page-container {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+
+.full-page-container div.colum-margin {}
+
+.full-page-container div.colum-content {
+    height: 100vh;
+}
+
+.colum-content-vertical-layout {
+    justify-content: center;
+    text-align: center;
+    display: grid;
+    grid-template-rows: 10vh 50vh 20vh 15vh;
+}
+
+.logo-container {
+    overflow: hidden;
+}
+
+a img.logo {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.desc-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.desc-container h1 {
+    flex-grow: 1;
+    font-size: 5vh;
+    margin: 0;
+}
+
+.desc-container h6.descript-rembe {
+    margin: 0;
+    font-size: 3vh;
+    flex-grow: 4;
+}
+
+.desc-container h6.descript-rembe::after {
+    animation: write 1 5s;
+    content: "Remember me:";
+}
+
+
+/* Anmacion que escribe el significado de rembe */
+
+@keyframes write {
+    0% {
+        content: "";
+    }
+    5% {
+        content: "R";
+    }
+    15% {
+        content: "Re";
+    }
+    20% {
+        content: "Rem";
+    }
+    25% {
+        content: "Remb";
+    }
+    30% {
+        content: "Rembe";
+    }
+    70% {
+        content: "Remebe";
+    }
+    75% {
+        content: "Remembe";
+    }
+    80% {
+        content: "Remember";
+    }
+    85% {
+        content: "Remember m";
+    }
+    90% {
+        content: "Remember me";
+    }
+}
+
+.continue-container p {
+    margin: 0 1vh;
+}
+
+.continue-container img.go-down {
+    max-width: 100%;
+    max-height: 100%;
+    filter: opacity(50%);
+    height: auto;
+    object-fit: cover;
+    animation: down infinite 1.5s;
+}
+
+
+/* Animacion de scroll */
+
+@keyframes down {
+    0% {
+        margin: 0;
+    }
+    25% {
+        margin: 1vh;
+    }
+    75% {
+        margin: 0;
+    }
+}

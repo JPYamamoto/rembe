@@ -1,26 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto+Slab&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@100&family=Inconsolata&family=Roboto+Slab&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@100&family=Inconsolata&family=Roboto+Slab&display=swap');
+/* Titulos importantes */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+/* Titulos secundarios*/
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+/*Texto normal*/
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 h1,
-h2,
+h2 {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
 h3,
-.nav a {
-    font-family: 'Bitter', serif;
-    font-family: 'Inconsolata', monospace;
-    font-family: 'Roboto Slab', serif;
-}
-
-button {
-    font-family: 'Bitter', serif;
-    font-family: 'Inconsolata', monospace;
-    font-family: 'Roboto Slab', serif;
-}
-
 h4,
 h5,
 h6,
+button {
+    font-family: 'Quicksand', sans-serif;
+}
+
 p {
-    font-family: 'Bitter', serif;
-    font-family: 'Inconsolata', monospace;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Nunito', sans-serif;
 }
