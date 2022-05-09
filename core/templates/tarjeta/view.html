@@ -1,4 +1,6 @@
 {% load static %}
+{% load filters %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'core/css/style_pretty_cards.css' %}">
 
 {% block content %}
@@ -17,7 +19,7 @@
                 </div>
             </div>
             <hr/>
-            <p>{{ object.contenido }}</p>
+            <p>{{ object.contenido | markdown }}</p>
             <button type="submit">Reverso</button>
         </div>
     </div>

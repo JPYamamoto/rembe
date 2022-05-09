@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'crispy_forms',
     'channels',
+    'markdownx',
     'reversion',
     'core',
 ]
