@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from markdownx.models import MarkdownxField
 import reversion
 
 # Create your models here.
@@ -13,8 +14,8 @@ class Tarjeta(models.Model):
     colaboradores = models.ManyToManyField(User, related_name="collaborators")
     fecha_vencimiento = models.DateTimeField(null=True)
     fecha_modificacion = models.DateTimeField(auto_now=True)
-    contenido = models.TextField(blank=True)
-    contenido_reverso = models.TextField(blank=True)
+    contenido = MarkdownxField(blank=False)
+    contenido_reverso = MarkdownxField(blank=True)
 
     def __str__(self):
         return "{} ({})".format(self.nombre, self.fecha_modificacion)

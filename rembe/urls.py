@@ -26,5 +26,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('tarjetas/', include('core.urls', namespace='tarjetas')),
     path('accounts/profile/', profile),
+    path('markdownx/', include('markdownx.urls')),
     # path('tarjeta/', TarjetaView.as_view()),
 ]
