@@ -14,6 +14,7 @@ Django==4.0.3
 django-allauth==0.49.0
 django-crispy-forms==1.14.0
 django-environ==0.8.1
+django-markdownx>=4.0.0b1
 django-reversion==5.0.0
 hyperlink==21.0.0
 idna==3.3
