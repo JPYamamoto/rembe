@@ -1,6 +1,6 @@
 from django.urls import path, reverse_lazy
 
-from core.views  import tarjeta, error
+from core.views  import tarjeta
 
 app_name = 'core'
 urlpatterns = [

@@ -1,0 +1,28 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block head_title %}HOME{% endblock %}
+{% block extra_header %}
+<link rel="stylesheet" type="text/css"  href= "{% static 'core/css/home/home-style.css' %}">
+{% endblock %} 
+
+
+
+{% block content %}
+<div class="colum-content-vertical-layout">
+    <div class="top-space"></div>
+    <div class="logo-container">
+        <a class="login-url" href="{% url 'account_login' %}">
+            <img class="logo" src="{% static 'login/images/logo_centrado_sin_fondo.png' %}"  alt="logo de rembe">
+        </a>
+    </div>
+    <div class="desc-container">
+        <h1>Rembe</h1>
+        <h6 class="descript-rembe"></h6>
+    </div>
+    <div class="continue-container">
+        <img class="go-down" src="{% static 'login/images/icons/go_down.png' %}" alt="ir abajo">
+    </div>
+</div>
+{% endblock %}
