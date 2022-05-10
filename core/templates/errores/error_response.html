@@ -1,0 +1,8 @@
+{% extends "base/base.html" %}
+{% block head_title %}Lo sentimos mucho{% endblock %}
+
+
+{% block content %}
+<h1>Ha ocurrido un error: {{error_type}}</h1>
+<p>{{mensaje}}</p>
+{% endblock %}

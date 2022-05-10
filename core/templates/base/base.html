@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rembe - {% block head_title %}{% endblock %}</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'login/images/favicon/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href=" {% static 'login/images/favicon/favicon-16x16.png' %}">
+        {%block fonts%}
+            <link rel="stylesheet" type="text/css"  href= "{% static 'core/css/fonts/fonts-style.css' %}">
+        {% endblock %}
+        {%block theme%}
+            <link rel="stylesheet" type="text/css"  href= "{% static 'login/style/main-theme-stylesheet.css' %}">
+        {%endblock%}
+        <link rel="stylesheet" type="text/css"  href= "{% static 'core/css/base/base-style.css' %}">
+        {% block extra_header %}{% endblock %}
+    </head>
+
+
+    <body>
+        {% block body %}
+        <div class="full-page-container">
+            <div class="colum-margin"></div>
+            <div class="colum-content">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="colum-margin"></div>
+        </div>
+        {% endblock %}
+
+        {% block extra_body %}
+        {% endblock %}
+    </body>
+</html>
