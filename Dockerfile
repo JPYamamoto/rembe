@@ -31,6 +31,7 @@ ENV DATABASE_PORT $database_port
 ENV GOOGLE_CLIENT_ID $google_client_id
 ENV GOOGLE_SECRET $google_secret
 
+RUN python ./manage.py collectstatic
 RUN python ./manage.py migrate --noinput
 
 EXPOSE 8000

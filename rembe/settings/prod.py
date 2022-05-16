@@ -5,6 +5,8 @@ environ.Env.read_env()
 
 SECRET_KEY = env('SECRET_KEY')
 
+ENV_ALLOWED_HOSTS = ['localhost']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
