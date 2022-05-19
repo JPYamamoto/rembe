@@ -21,6 +21,7 @@ ARG database_host
 ARG database_port
 ARG google_client_id
 ARG google_secret
+ARG debug
 
 ENV SECRET_KEY $secret_key
 ENV DATABASE_NAME $database_name
@@ -30,7 +31,9 @@ ENV DATABASE_HOST $database_host
 ENV DATABASE_PORT $database_port
 ENV GOOGLE_CLIENT_ID $google_client_id
 ENV GOOGLE_SECRET $google_secret
+ENV DEBUG $debug
 
+RUN python ./manage.py collectstatic
 RUN python ./manage.py migrate --noinput
 
 EXPOSE 8000
