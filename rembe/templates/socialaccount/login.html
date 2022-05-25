@@ -9,7 +9,7 @@
 <p>{% blocktrans with provider.name as provider %}Estas a punto de conectar con tu cuenta de {{ provider }}.{% endblocktrans %}</p>
 {% else %}
   
-<h1>{% blocktrans with provider.name as provider %}Continua con {{ provider }}{% endblocktrans %}</h1>
+<h1>{% blocktrans with provider.name as provider %}Continúa con {{ provider }}{% endblocktrans %}</h1>
   {% if provider.name == "Google" %}
       <a href="https://www.google.com/" target="_blank">
       <img style = "width: 15vh" class="GoogleLogo" alt="Logo de google" src="{% static 'login/images/logo_google.png' %}">
