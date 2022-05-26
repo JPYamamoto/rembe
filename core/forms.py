@@ -5,9 +5,10 @@ from core.models import Tarjeta
 
 class TarjetaForm(forms.ModelForm):
     nombre = forms.CharField(label='Nombre', required=True, max_length=50)
-    fecha_vencimiento = forms.DateTimeField(label="Fecha de Vencimiento", required=True,  widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M:%S'))
+    fecha_vencimiento = forms.DateTimeField(label='Fecha de Vencimiento', required=True, widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M:%S'))
     contenido = MarkdownxFormField(label='Contenido', required=True)
     contenido_reverso = MarkdownxFormField(label='Contenido Reverso', required=False)
+    tema = forms.ChoiceField(label='Tema', required=True, choices=Tarjeta.Tema.choices)
 
     class Meta:
         model = Tarjeta
@@ -17,4 +18,5 @@ class TarjetaForm(forms.ModelForm):
             'fecha_vencimiento',
             'contenido',
             'contenido_reverso',
+            'tema',
         ]
