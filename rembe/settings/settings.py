@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['rembe.azurewebsites.net', 'https://rembe.azurewebsites.net',]
+ALLOWED_HOSTS = ['rembe.azurewebsites.net', 'https://rembe.azurewebsites.net','127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://rembe.azurewebsites.net',]
 
 ENV_ALLOWED_HOSTS = []
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'channels',
     'markdownx',
     'reversion',
+    'django_extensions',
     'core',
 ]
 
