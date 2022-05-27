@@ -1,7 +1,7 @@
 from django import forms
 from markdownx.fields import MarkdownxFormField
 
-from core.models import Tarjeta
+from core.models.tarjeta import Tarjeta
 
 class TarjetaForm(forms.ModelForm):
     nombre = forms.CharField(label='Nombre', required=True, max_length=50)

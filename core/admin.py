@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Tarjeta
+from core.models.tarjeta import Tarjeta
 from reversion.admin import VersionAdmin
 
 # Register your models here.

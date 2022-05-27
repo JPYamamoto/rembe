@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from reversion.views import RevisionMixin
 
-from core.models import Tarjeta
+from core.models.tarjeta import Tarjeta
 from core.forms import TarjetaForm
 
 
