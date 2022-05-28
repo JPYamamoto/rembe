@@ -41,6 +41,13 @@
     text-align: end;
 }
 
+.content .back {
+    display: none;
+}
+
+
+/* Menu de navegacion */
+
 .lateral-menu {
     width: auto;
     z-index: 1;
