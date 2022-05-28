@@ -1,43 +1,82 @@
+{% extends "base/base.html" %}
 {% load static %}
 {% load filters %}
 
-{% if object.tema == 1 %}
-<link rel="stylesheet" type="text/css" href="{% static 'core/css/temas/splendor.css' %}">
-{% elif object.tema == 2 %}
-<link rel="stylesheet" type="text/css" href="{% static 'core/css/temas/retro.css' %}">
-{% elif object.tema == 3 %}
-<link rel="stylesheet" type="text/css" href="{% static 'core/css/temas/air.css' %}">
-{% elif object.tema == 4 %}
-<link rel="stylesheet" type="text/css" href="{% static 'core/css/temas/modest.css' %}">
-{% else %}
-<link rel="stylesheet" type="text/css" href="{% static 'core/css/style_pretty_cards.css' %}">
-{% endif %}
+{% block head_title %}{{ object.nombre }}{% endblock %}
 
-{% block content %}
-    <div class="container center">
-        <div class="card">
-            <h2>{{ object.nombre }}</h2>
-            <hr>
-            <div class="date">
-                <div class="row">
-                    <div class="column">
-                        <p>Última modificación: {{ object.fecha_modificacion }}</p>
-                    </div>
-                    <div class="column">
-                        <p style="text-align: right;">Fecha de vencimiento: {{ object.fecha_vencimiento|date:"SHORT_DATE_FORMAT" }}</p>
-                    </div>
-                </div>
-            </div>
-            <hr/>
-            <p>{{ object.contenido | markdown }}</p>
-            <button type="submit">Reverso</button>
+{%block theme%}
+{% if object.tema == 1 %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/temas/splendor.css' %}">
+{% elif object.tema == 2 %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/temas/retro.css' %}">
+{% elif object.tema == 3 %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/temas/air.css' %}">
+{% elif object.tema == 4 %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/temas/modest.css' %}">
+{% else %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/static/login/style/main-theme-stylesheet.css' %}">
+{% endif %}
+{%endblock%}
+{%block extra_header%}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/tarjeta/tarjeta_view.css' %}">
+{%endblock%}
+
+{%block content%}
+
+<div class="card">
+
+   <h1 class="topic">{{ object.nombre }} </h1>
+    
+   <div class="top-bar">
+        <div class="last-change">
+            <p>Última modificación:</p>
+            <p><time>{{ object.fecha_modificacion}}</time></p>
+        </div>
+
+        <div class="expired-date">
+            {% if not object.fecha_vencimiento == default_if_none %}
+            <p>Fecha de vencimiento: </p>
+            <p> <time>{{ object.fecha_vencimiento}}</time> </p>
+            {% endif %}  
         </div>
     </div>
 
-    <a href="{% url 'tarjetas:index' %}">
-        <button type="button" class="slide">
-            <div>Regresar al menú</div>
-            <i class="icon-arrow-right"></i>
-        </button>
-    </a>
+    <div class= "content">
+        <p>{{ object.contenido | markdown }}</p>
+    </div>
+
+    <div class="low-bar">
+        <div class="back-card">
+            <form action="{% url 'tarjetas:edit' tarjeta.pk %}">
+                <input type="submit" value="ver reverso" />
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+{% block extra_body %}
+<nav class="lateral-menu">
+
+        <a href="{% url 'tarjetas:edit' tarjeta.pk %}"> 
+                Editar tarjeta
+        </a>
+
+
+        <a href="{% url 'tarjetas:edit' tarjeta.pk %}"> 
+                Ver versiones
+         </a>
+
+
+        <a href="{% url 'tarjetas:edit' tarjeta.pk %}"> 
+                Compartir
+        </a>
+
+
+        <a href="{% url 'tarjetas:index' %}"> 
+                Volver al listado
+        </a>
+
+</nav>
 {% endblock %}
+
