@@ -1,0 +1,105 @@
+* {
+    background-color: var(--bg-color);
+}
+
+.card {
+    padding: 10px;
+    margin-top: 15vh;
+    display: flexbox;
+    border: 1px solid var(--contrast-color);
+    box-shadow: -1em -1em 10px 5px var(--contrast-color);
+}
+
+.card h1.topic {
+    font-size: 4em;
+    margin-bottom: 1vh;
+}
+
+.card .top-bar {
+    padding: 4px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-top: 1px solid var(--highlight-color);
+    border-bottom: 1px solid var(--highlight-color);
+    font-size: small;
+    color: var(--highlight-color);
+}
+
+.card .content {
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+.last-change p {
+    margin: 0;
+    justify-self: start;
+}
+
+.expired-date p {
+    margin: 0;
+    justify-content: end;
+    text-align: end;
+}
+
+.content .back {
+    display: none;
+}
+
+
+/* Menu de navegacion */
+
+.lateral-menu {
+    width: 5vw;
+    z-index: 1;
+    top: 40vh;
+    left: 90vw;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lateral-menu a {
+    margin-left: 1em;
+    padding-left: .5em;
+    padding-bottom: 1vh;
+    font-size: 0.9em;
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 10%;
+}
+
+.lateral-menu a:visited {
+    color: var(--text-color)
+}
+
+.lateral-menu a:hover {
+    background-color: var(--contrast-color);
+}
+
+.lateral-menu img {
+    display: block;
+    margin: auto;
+    max-width: 2em;
+    min-width: 2em;
+    border-radius: 50%;
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+
+
+/*low bar*/
+
+.low-bar {
+    text-align: end;
+}
+
+.low-bar button {
+    padding: .5em .7em;
+}
+
+.low-bar button:hover {
+    background-color: var(--main-color);
+    color: var(--contrast-color);
+}

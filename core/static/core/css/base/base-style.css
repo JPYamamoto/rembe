@@ -1,3 +1,13 @@
+* {
+    /* Colores de la página */
+    --main-color: #830F28;
+    --contrast-color: #B6B2B6;
+    --highlight-color: #416788;
+    --text-color: #000807;
+    --text-contrast-color: #6e6a6e;
+    --bg-color: #F5EFED;
+}
+
 .full-page-container {
     margin: 0;
     display: grid;
