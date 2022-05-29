@@ -49,11 +49,14 @@
 /* Menu de navegacion */
 
 .lateral-menu {
-    width: auto;
+    width: 5vw;
     z-index: 1;
     top: 40vh;
     left: 90vw;
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .lateral-menu a {
@@ -64,6 +67,7 @@
     display: block;
     color: var(--text-color);
     text-decoration: none;
+    border-radius: 10%;
 }
 
 .lateral-menu a:visited {
@@ -72,4 +76,30 @@
 
 .lateral-menu a:hover {
     background-color: var(--contrast-color);
+}
+
+.lateral-menu img {
+    display: block;
+    margin: auto;
+    max-width: 2em;
+    min-width: 2em;
+    border-radius: 50%;
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+
+
+/*low bar*/
+
+.low-bar {
+    text-align: end;
+}
+
+.low-bar button {
+    padding: .5em .7em;
+}
+
+.low-bar button:hover {
+    background-color: var(--main-color);
+    color: var(--contrast-color);
 }

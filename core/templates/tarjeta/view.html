@@ -60,23 +60,27 @@
 {% block extra_body %}
 <nav class="lateral-menu">
 
-        <a href="{% url 'tarjetas:edit' tarjeta.pk %}"> 
-                Editar tarjeta
+        <a href="{% url 'tarjetas:edit' tarjeta.pk %}" > 
+                <img src = {%static 'images/card-menu/editar_nota.png'%}
+                alt = "Editar tarjeta" title ="Editar tarjeta"  >
         </a>
 
 
-        <a href="{% url 'tarjetas:edit' tarjeta.pk %}"> 
-                Ver versiones
+        <a href="{% url 'tarjetas:edit' tarjeta.pk %}" > 
+            <img src = {%static 'images/card-menu/ver_versiones.png'%}
+            alt = "Ver versiones" title ="Ver versiones"  >
          </a>
 
 
-        <a href="{% url 'tarjetas:edit' tarjeta.pk %}"> 
-                Compartir
+        <a href="{% url 'tarjetas:edit' tarjeta.pk %}" > 
+            <img src = {%static 'images/card-menu/compartir.png'%}
+            alt = "Compartir  tarjeta" title ="Compartir  tarjeta"  >
         </a>
 
 
         <a href="{% url 'tarjetas:index' %}"> 
-                Volver al listado
+            <img src = {%static 'images/card-menu/regresar_lista.png'%}
+            alt = "Volver al listado" title ="Volver al listado"  >
         </a>
 
 </nav>
