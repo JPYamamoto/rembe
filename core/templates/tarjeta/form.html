@@ -1,10 +1,11 @@
-<head>
+{% extends "base/base.html" %}
 {% load static %}
-<title>Eliminar {{ object }}</title>
+{% block head_title %}{{ object }}{% endblock %}
+{% block extra_header %}
 <link rel="stylesheet" type="text/css" href="{% static 'core/css/tarjetas_form.css' %}">
-</head>
+{% endblock %}
 
-<body>
+{% block body %}
     <div class="main">
         <form action="" method="post">
             {% csrf_token %}
@@ -28,8 +29,10 @@
                 <label>Contenido al reverso</label>
                 {{ form.contenido_reverso }}
             </div>
-            <input type="submit" value="Guardar" class="button green">
+            <div class ="save">
+                <input type="submit" value="Guardar" class="button green">
+            <div>
         </form>
     </div>
     {{ form.media }}
-</body>
+{%endblock%}
