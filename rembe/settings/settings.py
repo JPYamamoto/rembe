@@ -66,7 +66,8 @@ SOCIALACCOUNT_PROVIDERS = {
             'client_id': '',
             'secret': '',
             'key': ''
-        }
+        },
+        
     }
 }
 
