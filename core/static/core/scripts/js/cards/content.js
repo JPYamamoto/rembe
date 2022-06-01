@@ -5,8 +5,6 @@ function moduleContent() {
 
     var estado = detras.style.display;
 
-    console.log(estado)
-
     if (estado == 'none' || !estado) {
         detras.style.display = 'block'
         button.innerHTML = 'Ver frente'
