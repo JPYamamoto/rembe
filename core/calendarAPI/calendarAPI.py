@@ -1,8 +1,5 @@
-import webbrowser
-from google.oauth2 import service_account
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
-from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
 from allauth.socialaccount.models import SocialToken, SocialApp
 import googleapiclient.discovery
@@ -16,7 +13,7 @@ env = environ.Env()
 
 CLIENT_ID = env("GOOGLE_CLIENT_ID")
 CLIENT_SECRET = env("GOOGLE_SECRET")
-SCOPES = ['https://www.googleapis.com/auth/calendar']
+SCOPES = ['https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/calendar.events']
 TOKEN_URI = 'https://oauth2.googleapis.com/token'
 
 TIME_ZONE = "America/Mexico_City"
@@ -33,11 +30,14 @@ def get_credentials(user):
     Returns:
         Credentials: Credenciales del usuario
     """
-    token = Token.objects.get(user=user)
+    token_exists = Token.objects.filter(user=user)
+
     
-    if not token:
+    if not token_exists.exists():
         return create_credentials(user)
-        
+    
+    token = Token.objects.get(user=user)
+            
     creds = Credentials(
         token = token.token,
         refresh_token = token.refresh_token,
@@ -46,8 +46,8 @@ def get_credentials(user):
         client_secret = CLIENT_SECRET,
         scopes=SCOPES
     )
-    if creds.valid:
-        if creds and creds.expired and creds.refresh_token:
+    if not creds.valid:
+        if creds.expired and creds.refresh_token:
             creds.refresh(Request())
 
     return creds
