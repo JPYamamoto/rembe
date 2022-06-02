@@ -35,8 +35,8 @@ else:
     SOCIALACCOUNT_PROVIDERS = {
         'google': {
             'APP': {
-                'client_id': None,
-                'secret': None,
+                'client_id': env('GOOGLE_CLIENT_ID'),
+                'secret': env('GOOGLE_SECRET'),
                 'key': ''
             }
         }
