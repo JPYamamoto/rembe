@@ -5,8 +5,7 @@ function moduleContent() {
 
     var estado = detras.style.display;
 
-
-    if (estado == 'none') {
+    if (estado == 'none' || !estado) {
         detras.style.display = 'block'
         button.innerHTML = 'Ver frente'
         frente.style.display = 'none'
