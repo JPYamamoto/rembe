@@ -19,7 +19,8 @@
 {%endblock%}
 {%block extra_header%}
     <link rel="stylesheet" type="text/css" href="{% static 'core/css/tarjeta/tarjeta_view.css' %}">
-    <script src="{% static 'core/scripts/js/cards/content.js' %}"></script> 
+    <script src="{% static 'core/scripts/js/cards/content.js' %}"></script>
+    <script src="{% static 'core/scripts/js/cards/youtube.js' %}"></script>
 {%endblock%}
 
 {%block content%}
@@ -43,7 +44,7 @@
         </div>
     </div>
 
-    <div class= "content">
+    <div class="content" id="content">
         <div class="front" id="front">{{ object.contenido | markdown }}</div>
         <div class="back" id="back"> {{ object.contenido_reverso | markdown}}</div>
     </div>
