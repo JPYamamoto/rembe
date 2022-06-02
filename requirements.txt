@@ -42,3 +42,5 @@ whitenoise==6.1.0
 zope.interface==5.4.0
 django-extensions==3.1.5
 Werkzeug==1.0.1
+google-api-python-client==2.48.0
+
