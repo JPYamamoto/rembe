@@ -3,20 +3,19 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.oauth2.credentials import Credentials
 from allauth.socialaccount.models import SocialToken, SocialApp
 import googleapiclient.discovery
+
 from datetime import timedelta
+
 from core.models.token import Token
-
 from core.models import Token
-import environ
 
-env = environ.Env()
+from django.conf import settings
 
-CLIENT_ID = env("GOOGLE_CLIENT_ID")
-CLIENT_SECRET = env("GOOGLE_SECRET")
+CLIENT_ID = settings.SOCIALACCOUNT_PROVIDERS['google']['APP']['client_id']
+CLIENT_SECRET = settings.SOCIALACCOUNT_PROVIDERS['google']['APP']['secret']
 SCOPES = ['https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/calendar.events']
 TOKEN_URI = 'https://oauth2.googleapis.com/token'
-
-TIME_ZONE = "America/Mexico_City"
+TIME_ZONE = settings.TIME_ZONE
 
 def get_credentials(user):
     """
@@ -128,5 +127,3 @@ def make_event(fecha, nombre, user):
             },
         }
     service.events().insert(calendarId=calendar_id, body=event).execute()
-
- 
