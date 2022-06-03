@@ -5,13 +5,13 @@
         <title>Rembe - {% block head_title %}{% endblock %}</title>
         <link rel="icon" type="image/png" sizes="32x32" href="{% static 'login/images/favicon/favicon-32x32.png' %}">
         <link rel="icon" type="image/png" sizes="16x16" href=" {% static 'login/images/favicon/favicon-16x16.png' %}">
+        <link rel="stylesheet" type="text/css"  href= "{% static 'core/css/base/base-style.css' %}">
         {%block fonts%}
             <link rel="stylesheet" type="text/css"  href= "{% static 'core/css/fonts/fonts-style.css' %}">
         {% endblock %}
         {%block theme%}
             <link rel="stylesheet" type="text/css"  href= "{% static 'login/style/main-theme-stylesheet.css' %}">
         {%endblock%}
-        <link rel="stylesheet" type="text/css"  href= "{% static 'core/css/base/base-style.css' %}">
         {% block extra_header %}{% endblock %}
     </head>
 
