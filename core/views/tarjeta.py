@@ -1,4 +1,3 @@
-from tokenize import Token
 from django.utils import timezone
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,9 +6,10 @@ from django.views.generic import CreateView, UpdateView, DeleteView, ListView, D
 from reversion.views import RevisionMixin
 
 from core.models.tarjeta import Tarjeta
+from core.models.token import Token
 from core.forms import TarjetaForm
 
-from core.calendarAPI.calendarAPI import make_event
+from core.calendarAPI.calendarAPI import make_event, create_credentials
 
 class ListarTarjeta(LoginRequiredMixin, ListView):
     model = Tarjeta
@@ -39,6 +39,9 @@ class CrearTarjeta(LoginRequiredMixin, RevisionMixin, CreateView):
         form.instance.fecha_modificacion = timezone.now()
         
         # Hacemos lo de calendar
+        
+        if not Token.objects.filter(user=self.request.user).exists():
+            return create_credentials()
         
         make_event(form.instance.fecha_vencimiento, form.instance.nombre, user=self.request.user)
         return super(CrearTarjeta, self).form_valid(form)
