@@ -23,7 +23,7 @@ CLIENT_CONFIG = {'web': {
     'client_id': CLIENT_ID,
     'auth_uri': 'https://accounts.google.com/o/oauth2/auth',
     'token_uri': TOKEN_URI,
-    "redirect_uris": ["https://localhost","http://localhost", "urn:ietf:wg:oauth:2.0:oob", 'https://127.0.0.1:8000/tarjetas/', 'https://rembe.azurewebsites.net/tarjetas/'],
+    "redirect_uris": ["https://localhost","http://localhost", "urn:ietf:wg:oauth:2.0:oob", 'https://127.0.0.1:8000/tarjetas/', 'https://rembe.azurewebsites.net/tarjetas/', 'https://rembe.azurewebsites.net/tarjetas/create/', 'https://rembe.azurewebsites.net/tarjetas/redirect/'],
     'auth_provider_x509_cert_url': 'https://www.googleapis.com/oauth2/v1/certs',
     'client_secret': CLIENT_SECRET
     }}
@@ -67,7 +67,7 @@ def get_authorization_url():
     flow = google_auth_oauthlib.flow.Flow.from_client_config(
         client_config=CLIENT_CONFIG,
         scopes=SCOPES,
-        redirect_uri='https://127.0.0.1:8000/tarjetas/redirect/')
+        redirect_uri='https://rembe.azurewebsites.net/tarjetas/redirect/')
     
     authorization_url, _ = flow.authorization_url(
     access_type='offline',
@@ -97,7 +97,7 @@ def fetch_token(request):
     creds = flow.credentials
     token = Token(token=creds.token, refresh_token=creds.refresh_token, user=request.user)
     token.save()
-    return redirect('https://127.0.0.1:8000/tarjetas/create/')
+    return redirect('https://rembe.azurewebsites.net/tarjetas/create/')
     
     
 
@@ -116,7 +116,7 @@ def create_credentials():
     flow = google_auth_oauthlib.flow.Flow.from_client_config(
         client_config=CLIENT_CONFIG,
         scopes=SCOPES,
-        redirect_uri='https://127.0.0.1:8000/tarjetas/redirect/')
+        redirect_uri='https://rembe.azurewebsites.net/tarjetas/redirect/')
     
    
     auth_url = get_authorization_url()
