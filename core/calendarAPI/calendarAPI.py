@@ -90,7 +90,7 @@ def fetch_token(request):
     flow = google_auth_oauthlib.flow.Flow.from_client_config(
         client_config=CLIENT_CONFIG,
         scopes=None,
-        redirect_uri='https://127.0.0.1:8000/tarjetas/redirect/')
+        redirect_uri='https://rembe.azurewebsites.net/tarjetas/redirect/')
     
     flow.fetch_token(code=request.GET.get('code'))
     
