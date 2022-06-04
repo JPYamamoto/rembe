@@ -4,6 +4,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.oauth2.credentials import Credentials
 import googleapiclient.discovery
 
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from datetime import timedelta
