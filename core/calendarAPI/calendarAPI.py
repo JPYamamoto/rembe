@@ -141,8 +141,7 @@ def make_event(fecha, nombre, request):
     
     service = googleapiclient.discovery.build('calendar', 'v3', credentials=credentials)
     
-    result = service.calendarList().list().execute()
-    calendar_id = result['items'][0]['id'] # Calendario principal
+    
     fecha_final = fecha + timedelta(hours=24)
 
     event = {
@@ -164,6 +163,6 @@ def make_event(fecha, nombre, request):
                 ],
             },
         }
-    service.events().insert(calendarId=calendar_id, body=event).execute()
+    service.events().insert(calendarId='primary', body=event).execute()
 
  
