@@ -43,7 +43,7 @@ class CrearTarjeta(LoginRequiredMixin, RevisionMixin, CreateView):
         if not Token.objects.filter(user=self.request.user).exists():
             return create_credentials()
         
-        make_event(form.instance.fecha_vencimiento, form.instance.nombre, user=self.request.user)
+        make_event(form.instance.fecha_vencimiento, form.instance.nombre, request=self.request)
         return super(CrearTarjeta, self).form_valid(form)
 
 
