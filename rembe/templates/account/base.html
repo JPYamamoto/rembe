@@ -30,13 +30,7 @@
         </a>
       </div>
       <ul class = "Opciones">
-        {% if user.is_authenticated %}
-        <li class= "nav"><a href="{% url 'account_email' %}">Change E-mail</a></li>
         <li class= "nav"><a href="{% url 'account_logout' %}">Sign Out</a></li>
-        {% else %}
-        <li class= "nav"><a href="{% url 'account_login' %}">Sign In</a></li>
-        <li class= "nav"><a href="{% url 'account_signup' %}">Sign Up</a></li>
-        {% endif %}
       </u1>
     </header>
     <div class="CenterContainer">

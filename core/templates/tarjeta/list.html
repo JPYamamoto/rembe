@@ -2,9 +2,15 @@
 <link rel="stylesheet" type="text/css" href="{% static 'core/css/lista_tarjetas.css' %}">
 
 
-
 {% block content %}
 {% if object_list %}
+<header class="MenuSuperior">
+    <div class = "Marca">
+      <a href="{% url 'account_login' %}">
+        <img class="RembeLogoMenu" alt="Logo de rembe" src="{% static 'login/images/logo_sin_fondo.png' %}" width="50">
+      </a>
+</header>
+
     <div class="table-users">
     <div class="header">Tus tarjetas</div>
     
@@ -42,6 +48,13 @@
     </div>
 
 {% else %}
+    <header class="MenuSuperior">
+        <div class = "Marca">
+          <a href="{% url 'account_login' %}">
+            <img class="RembeLogoMenu" alt="Logo de rembe" src="{% static 'login/images/logo_sin_fondo.png' %}" width="50">
+          </a>
+    </header>
+
     <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
         <h3>Parece que no tienes ninguna tarjeta creada.</h3>
         <a href="{% url 'tarjetas:create' %}">
