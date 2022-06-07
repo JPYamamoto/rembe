@@ -1,11 +1,9 @@
 from django.contrib import admin
+from simple_history.admin import SimpleHistoryAdmin
 from core.models.tarjeta import Tarjeta
-from reversion.admin import VersionAdmin
+from core.models.token import Token
 
 # Register your models here.
 
-# admin.site.register(Tarjeta)
-
-@admin.register(Tarjeta)
-class ModelAdmin(VersionAdmin):
-    pass
+admin.site.register(Tarjeta, SimpleHistoryAdmin)
+admin.site.register(Token, SimpleHistoryAdmin)

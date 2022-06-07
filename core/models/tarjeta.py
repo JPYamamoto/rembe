@@ -2,13 +2,12 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 from markdownx.models import MarkdownxField
-import reversion
+from simple_history.models import HistoricalRecords
 
 # Create your models here.
 
 User=get_user_model()
 
-@reversion.register()
 class Tarjeta(models.Model):
     nombre = models.CharField(max_length=50)
     autor = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
@@ -26,6 +25,7 @@ class Tarjeta(models.Model):
         MODEST   = 4, _('Modest')
 
     tema = models.IntegerField(choices=Tema.choices, blank=False, null=False, default=Tema.DEFAULT)
+    history = HistoricalRecords()
 
     def __str__(self):
         return "{} ({})".format(self.nombre, self.fecha_modificacion)
