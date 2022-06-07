@@ -1,23 +1,34 @@
 from google.auth.transport.requests import Request
+import google_auth_oauthlib.flow
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.oauth2.credentials import Credentials
-from allauth.socialaccount.models import SocialToken, SocialApp
 import googleapiclient.discovery
 
+from django.conf import settings
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from datetime import timedelta
 
 from core.models.token import Token
 from core.models import Token
 
-from django.conf import settings
-
 CLIENT_ID = settings.SOCIALACCOUNT_PROVIDERS['google']['APP']['client_id']
 CLIENT_SECRET = settings.SOCIALACCOUNT_PROVIDERS['google']['APP']['secret']
-SCOPES = ['https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/calendar.events']
+SCOPES = ['https://www.googleapis.com/auth/calendar',
+          'https://www.googleapis.com/auth/calendar.events']
 TOKEN_URI = 'https://oauth2.googleapis.com/token'
-TIME_ZONE = settings.TIME_ZONE
+TIME_ZONE = "America/Mexico_City"
 
-def get_credentials(user):
+CLIENT_CONFIG = {'web': {
+    'client_id': CLIENT_ID,
+    'auth_uri': 'https://accounts.google.com/o/oauth2/auth',
+    'token_uri': TOKEN_URI,
+    "redirect_uris": ["https://localhost","http://localhost", "urn:ietf:wg:oauth:2.0:oob", 'https://127.0.0.1:8000/tarjetas/', 'https://rembe.azurewebsites.net/tarjetas/', 'https://rembe.azurewebsites.net/tarjetas/create/', 'https://rembe.azurewebsites.net/tarjetas/redirect/'],
+    'auth_provider_x509_cert_url': 'https://www.googleapis.com/oauth2/v1/certs',
+    'client_secret': CLIENT_SECRET
+    }}
+
+def get_credentials(request):
     """
     Método que genera las credenciales para acceder a Google Calendar API,
     primero busca las credeciales en la Base de Datos, y si no están las genera y 
@@ -29,13 +40,8 @@ def get_credentials(user):
     Returns:
         Credentials: Credenciales del usuario
     """
-    token_exists = Token.objects.filter(user=user)
 
-    
-    if not token_exists.exists():
-        return create_credentials(user)
-    
-    token = Token.objects.get(user=user)
+    token = Token.objects.get(user=request.user)
             
     creds = Credentials(
         token = token.token,
@@ -51,7 +57,51 @@ def get_credentials(user):
 
     return creds
 
-def create_credentials(user):
+def get_authorization_url():
+    """
+    Método que regresa el authorization_url
+
+    Returns:
+        str: authorization_url
+    """
+    flow = google_auth_oauthlib.flow.Flow.from_client_config(
+        client_config=CLIENT_CONFIG,
+        scopes=SCOPES,
+        redirect_uri='https://rembe.azurewebsites.net/tarjetas/redirect/')
+    
+    authorization_url, _ = flow.authorization_url(
+    access_type='offline',
+    include_granted_scopes='true'
+    )
+    
+    return authorization_url
+
+def fetch_token(request):
+    """
+    Método que obtiene las credenciales, las guarda
+    y regresa a la página principasl
+
+    Args:
+        request (request): request hacia Oauth
+
+    Returns:
+        redirect: redirección a la página princiapl
+    """
+    flow = google_auth_oauthlib.flow.Flow.from_client_config(
+        client_config=CLIENT_CONFIG,
+        scopes=None,
+        redirect_uri='https://rembe.azurewebsites.net/tarjetas/redirect/')
+    
+    flow.fetch_token(code=request.GET.get('code'))
+    
+    creds = flow.credentials
+    token = Token(token=creds.token, refresh_token=creds.refresh_token, user=request.user)
+    token.save()
+    return redirect('https://rembe.azurewebsites.net/tarjetas/create/')
+    
+    
+
+def create_credentials():
     """
     Método que genera las credenciales de un usuario por primera vez
 
@@ -59,36 +109,24 @@ def create_credentials(user):
         user (User): Usuario
 
     Returns:
-        Credentials: Credenciales del usuario
+        redirect: redirección a el authorization_url
     """
+
     
-    CLIENT_CONFIG = {'web': {
-    'client_id': CLIENT_ID,
-    'auth_uri': 'https://accounts.google.com/o/oauth2/auth',
-    'token_uri': TOKEN_URI,
-    "redirect_uris": ["https://localhost","http://localhost", "urn:ietf:wg:oauth:2.0:oob", 'https://127.0.0.1:8000/tarjetas/', 'https://rembe.azurewebsites.net/tarjetas/'],
-    'auth_provider_x509_cert_url': 'https://www.googleapis.com/oauth2/v1/certs',
-    'client_secret': CLIENT_SECRET
-    }}
-    
-    flow = InstalledAppFlow.from_client_config(
+    flow = google_auth_oauthlib.flow.Flow.from_client_config(
         client_config=CLIENT_CONFIG,
         scopes=SCOPES,
-        redirect_uri='https://127.0.0.1:8000/tarjetas/')
+        redirect_uri='https://rembe.azurewebsites.net/tarjetas/redirect/')
     
-    creds = flow.run_local_server()
-    print(f"REFRESH_TOKEN: {creds.refresh_token}")
+   
+    auth_url = get_authorization_url()
     
-    # Guardamos los tokens en la BDD
-    token = Token(token=creds.token, refresh_token=creds.refresh_token, user=user)
-    token.save() 
-    
-    return creds
+    return redirect(auth_url)
 
     
 
 
-def make_event(fecha, nombre, user):
+def make_event(fecha, nombre, request):
     """
     Método para generar un evento e insertarlo en el calendario del usuario
 
@@ -99,12 +137,11 @@ def make_event(fecha, nombre, user):
     """
     
 
-    credentials = get_credentials(user)
+    credentials = get_credentials(request)
     
     service = googleapiclient.discovery.build('calendar', 'v3', credentials=credentials)
     
-    result = service.calendarList().list().execute()
-    calendar_id = result['items'][0]['id'] # Calendario principal
+    
     fecha_final = fecha + timedelta(hours=24)
 
     event = {
@@ -126,4 +163,4 @@ def make_event(fecha, nombre, user):
                 ],
             },
         }
-    service.events().insert(calendarId=calendar_id, body=event).execute()
+    service.events().insert(calendarId='primary', body=event).execute()
