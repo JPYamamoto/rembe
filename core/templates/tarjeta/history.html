@@ -2,7 +2,7 @@
 
 {% block content %}
     {% for version in object_list %}
-        <a href="{% url 'tarjetas:view' version.id %}?version={{ version.history_id }}">Versión {{ forloop.revcounter }} (Commit ID #{{ version.history_id }}): {{ version.fecha_modificacion }}</p>
+        <a href="{% url 'tarjetas:view' version.id %}?version={{ version.history_id }}">Versión {{ forloop.revcounter }} (Commit ID #{{ version.history_id }}): {{ version.fecha_modificacion }}</a>
     {% endfor %}
 
 {% endblock %}
