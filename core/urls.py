@@ -10,5 +10,6 @@ urlpatterns = [
     path('edit/<pk>/', tarjeta.EditarTarjeta.as_view(), name='edit'),
     path('delete/<pk>/', tarjeta.EliminarTarjeta.as_view(), name='delete'),
     path('view/<pk>/', tarjeta.VerTarjeta.as_view(), name='view'),
+    path('history/<pk>/', tarjeta.HistorialTarjeta.as_view(), name='history'),
     path('redirect/', calendar.CalendarOauth.as_view(), name='redirect')
 ]

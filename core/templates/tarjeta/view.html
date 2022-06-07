@@ -33,7 +33,7 @@
    <div class="top-bar">
         <div class="last-change">
             <p>Última modificación:</p>
-            <p><time>{{ object.fecha_modificacion}}</time></p>
+            <p><time>{{ object.fecha_modificacion }}</time></p>
         </div>
 
         <div class="expired-date">
@@ -62,19 +62,19 @@
 {% block extra_body %}
 <nav class="lateral-menu">
 
-        <a href="{% url 'tarjetas:edit' tarjeta.pk %}" > 
+        <a href="{% url 'tarjetas:edit' object.id %}" >
                 <img src = {%static 'images/card-menu/editar_nota.png'%}
                 alt = "Editar tarjeta" title ="Editar tarjeta"  >
         </a>
 
 
-        <a href="{% url 'tarjetas:edit' tarjeta.pk %}" > 
+        <a href="{% url 'tarjetas:history' object.id %}" >
             <img src = {%static 'images/card-menu/ver_versiones.png'%}
             alt = "Ver versiones" title ="Ver versiones"  >
          </a>
 
 
-        <a href="{% url 'tarjetas:edit' tarjeta.pk %}" > 
+        <a href="{% url 'tarjetas:edit' object.id %}" >
             <img src = {%static 'images/card-menu/compartir.png'%}
             alt = "Compartir  tarjeta" title ="Compartir  tarjeta"  >
         </a>
