@@ -35,11 +35,11 @@
     <div class="CenterContainer">
       {% block content %}
       <h1> Bienvenido </h1>
-      <button class="primaryAction Tarjetas" type="submit">
-        <a href="{% url 'tarjetas:index' %}">
+      <a href="{% url 'tarjetas:index' %}">
+          <button class="primaryAction Tarjetas" type="submit">
           Ir a mis tarjetas
-        </a>
-      </button>
+        </button>
+      </a>
       {% endblock %}
     <div>
     {% endblock %}
