@@ -1,8 +1,14 @@
+{% extends "base/base.html" %}
 {% load static %}
+
+{% block head_title %}versiones{% endblock %}
+{%block extra_header%}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/tarjeta/tarjeta_view.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/history/history-style.css' %}">
+{%endblock%}
 
 {% block content %}
     {% for version in object_list %}
-        <a href="{% url 'tarjetas:view' version.id %}?version={{ version.history_id }}">Versión {{ forloop.revcounter }} (Commit ID #{{ version.history_id }}): {{ version.fecha_modificacion }}</a>
+        <a class="version" href="{% url 'tarjetas:view' version.id %}?version={{ version.history_id }}">Versión {{ forloop.revcounter }} (Commit ID #{{ version.history_id }}): {{ version.fecha_modificacion }}</a>
     {% endfor %}
-
 {% endblock %}
