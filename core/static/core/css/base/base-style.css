@@ -10,10 +10,12 @@
 
 .full-page-container {
     margin: 0;
-    display: grid;
-    grid-template-columns: 10% 80% 10%;
+    display: flex;
 }
 
 .full-page-container div.colum-content {
     min-height: 100vh;
+    max-width: 75%;
+    margin: auto;
+    width: 100%;
 }
