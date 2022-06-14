@@ -2,9 +2,14 @@
     background-color: var(--bg-color);
 }
 
+body {
+    max-width: 100vw !important;
+}
+
 .card {
     padding: 10px;
     margin-top: 15vh;
+    margin-bottom: 5vh;
     display: flexbox;
     border: 1px solid var(--contrast-color);
     box-shadow: -1em -1em 10px 5px var(--contrast-color);
@@ -25,9 +30,10 @@
     color: var(--highlight-color);
 }
 
-.card .content {
-    padding-left: 2vw;
-    padding-right: 2vw;
+iframe {
+    display: block;
+    max-width: 100%;
+    margin: auto !important;
 }
 
 .last-change p {
@@ -102,4 +108,41 @@
 .low-bar button:hover {
     background-color: var(--main-color);
     color: var(--contrast-color);
+}
+
+@media print {
+    * {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    h1 {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    nav {
+        display: none !important;
+    }
+
+    .card {
+        padding: 5px;
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
+        display: flexbox;
+        box-shadow: none;
+    }
+
+    .colum-content {
+        max-width: 100% !important;
+        min-height: auto !important;
+    }
+
+    .change-content {
+        display: none;
+    }
+
+    .content .back {
+        display: block;
+    }
 }

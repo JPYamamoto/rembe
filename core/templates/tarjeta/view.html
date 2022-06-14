@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'core/static/login/style/main-theme-stylesheet.css' %}">
 {% endif %}
 {%endblock%}
+
 {%block extra_header%}
     <link rel="stylesheet" type="text/css" href="{% static 'core/css/tarjeta/tarjeta_view.css' %}">
     <script src="{% static 'core/scripts/js/cards/content.js' %}"></script>
@@ -72,15 +73,15 @@
          </a>
 
 
-        <a href="{% url 'tarjetas:edit' object.id %}" >
-            <img src = {%static 'images/card-menu/compartir.png'%}
-            alt = "Compartir  tarjeta" title ="Compartir  tarjeta"  >
+        <a onclick="imprimir()">
+            <img src = {%static 'images/card-menu/imprimir.png'%}
+            alt="Imprimir tarjeta" title="Imprimir tarjeta"  >
         </a>
 
 
         <a href="{% url 'tarjetas:index' %}"> 
-            <img src = {%static 'images/card-menu/regresar_lista.png'%}
-            alt = "Volver al listado" title ="Volver al listado"  >
+            <img src={%static 'images/card-menu/regresar_lista.png'%}
+            alt="Volver al listado" title="Volver al listado"  >
         </a>
 
 </nav>

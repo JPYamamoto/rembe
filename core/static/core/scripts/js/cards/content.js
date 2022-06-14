@@ -15,3 +15,7 @@ function moduleContent() {
         frente.style.display = 'block'
     }
 }
+
+function imprimir() {
+    window.print();
+}
