@@ -79,6 +79,12 @@
         </a>
 
 
+        <a href="{% url 'tarjetas:download' object.id %}">
+            <img src={%static 'images/card-menu/descargar.png'%}
+            alt="Descargar Markdown" title="Descargar Markdown"  >
+        </a>
+
+
         <a href="{% url 'tarjetas:index' %}"> 
             <img src={%static 'images/card-menu/regresar_lista.png'%}
             alt="Volver al listado" title="Volver al listado"  >

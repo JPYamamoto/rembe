@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 from markdownx.models import MarkdownxField
 from simple_history.models import HistoricalRecords
 
+from io import StringIO, BytesIO
+
 # Create your models here.
 
 User=get_user_model()
@@ -29,3 +31,23 @@ class Tarjeta(models.Model):
 
     def __str__(self):
         return "{} ({})".format(self.nombre, self.fecha_modificacion)
+
+    def to_markdown_file(self):
+        content = (
+            "---\n"
+            + "nombre: {}\n".format(self.nombre)
+            + "autor: {}\n".format(self.autor.username)
+            + "fecha_vencimiento: {}\n".format(self.fecha_vencimiento)
+            + "fecha_modificacion: {}\n".format(self.fecha_modificacion)
+            + "---\n"
+            + self.contenido
+            + "\n---\n"
+            + self.contenido_reverso
+        )
+
+        bytes_content = content.encode('utf-8')
+
+        file_content = BytesIO()
+        file_content.write(bytes_content)
+
+        return file_content
