@@ -1,13 +1,15 @@
 from django.utils import timezone
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404, FileResponse
+
+from io import StringIO
 
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 
 from core.models.tarjeta import Tarjeta
 from core.models.token import Token
 from core.forms import TarjetaForm
-
 from core.calendarAPI.calendarAPI import make_event, create_credentials
 
 class ListarTarjeta(LoginRequiredMixin, ListView):
@@ -82,3 +84,15 @@ class EliminarTarjeta(LoginRequiredMixin, DeleteView):
     model = Tarjeta
     template_name = 'tarjeta/delete_form.html'
     success_url = reverse_lazy('tarjetas:index')
+
+def download_note(request, tarjeta_id):
+    try:
+        tarjeta = Tarjeta.objects.get(pk=tarjeta_id)
+    except Tarjeta.DoesNotExist:
+        raise Http404("Poll does not exist")
+
+    file_buffer = tarjeta.to_markdown_file()
+    file_buffer.seek(0)
+
+    response = FileResponse(file_buffer, as_attachment=True, filename='{}.md'.format(tarjeta.nombre))
+    return response

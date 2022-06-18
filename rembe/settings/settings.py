@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'crispy_forms',
-    'channels',
     'markdownx',
     'django_extensions',
     'simple_history',
@@ -102,7 +101,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rembe.wsgi.application'
-ASGI_APPLICATION = 'rembe.asgi.application'
+# ASGI_APPLICATION = 'rembe.asgi.application'
 
 
 # Database
