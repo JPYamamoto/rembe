@@ -22,7 +22,44 @@
         <h6 class="descript-rembe"></h6>
     </div>
     <div class="continue-container">
-        <img class="go-down" src="{% static 'login/images/icons/go_down.png' %}" alt="ir abajo">
+        <a href="#desc-header"><img class="go-down" src="{% static 'login/images/icons/go_down.png' %}" alt="ir abajo"></a>
     </div>
+</div>
+{% endblock %}
+{% block extra_body %}
+<div class="full-page-container">
+    <div class="colum-margin"></div>
+        <div class="colum-content">
+            <div class="what-is-rembe">
+            <div class="des-section" >
+                <h1  id = "desc-header">¿Qué es REMBE?</h1>
+                <p  >Rembe es una herramienta enfocada a la toma de notas en forma de tarjetas. Crea dinámicos y simples recordatorios con gran estilo y funcionalidad:</p>
+            </div>
+            <div class="des-section">
+                <h2>Editor de Markdown en línea con previsualización en tiempo real </h2>
+                <img src = {%static 'images/home/md_logo500.png'%}
+                alt = "Editor de Markdown integrado" 
+                title ="Soporte para edicion de markdown en tiempo real"  >
+            </div>
+            <div class="des-section">
+                <h2>Inserta videos en tus tarjetas desde YouTube </h2>
+                <img src = {%static 'images/home/youtube_logo500.png'%}
+                alt = "Inserta videos de YouTube" 
+                title ="Agrega videos desde YouTube a tus notas"  >
+            </div>
+            <div class="des-section">
+                <h2>Vincula tus tarjetas con recordatorios asociadas a tu calendario de Google</h2>
+                <img src = {%static 'images/home/calendar_logo500.png'%}
+                alt = "Vinculación con google calendar" 
+                title ="Crea recordatorios que se vinculan con tu cuenta de google calendar"  >
+            </div>
+            <div class="des-section">
+                <form action="{% url 'account_login' %}"  class="start">
+                    <button class="go-login" type="submit" value="go-login">¡Comienza Ya!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="colum-margin"></div>
 </div>
 {% endblock %}

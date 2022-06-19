@@ -109,3 +109,46 @@ a img.logo {
         margin: 0;
     }
 }
+
+.what-is-rembe {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.what-is-rembe p {
+    font-size: 1.25em;
+}
+
+.what-is-rembe .des-section {
+    min-width: 100%;
+    display: block;
+}
+
+.des-section img {
+    display: block;
+    margin: auto;
+    max-height: 10em;
+}
+
+#desc-header {
+    background: #e7e1df;
+    padding: 0.2em;
+    border-radius: 3em;
+}
+
+button {
+    font-size: 1.5em;
+    border-radius: 10em;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    padding: 1vh 5vw;
+    border: 2px solid var(--contrast-color);
+}
+
+button:hover {
+    color: var(--main-color);
+    background-color: var(--bg-color);
+    border: 2px solid var(--main-color);
+}
