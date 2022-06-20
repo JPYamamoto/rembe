@@ -2,7 +2,7 @@ from core.calendarAPI.calendarAPI import fetch_token, make_event
 from django.views.generic import View
 from core.models.tarjeta import Tarjeta
 
-class  CalendarOauth(View):
+class CalendarOauth(View):
     """
     Vista auxiliar para redirigir la autorización para Calendar
     """
