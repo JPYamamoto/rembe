@@ -87,8 +87,11 @@ class CrearTarjeta(LoginRequiredMixin, CreateView):
         form.instance.fecha_modificacion = timezone.now()
         
         # Hacemos lo de calendar
+        tarjeta = form.save(commit=False)
+        
         
         if not Token.objects.filter(user=self.request.user).exists():
+            tarjeta.save()
             return create_credentials()
         
         make_event(form.instance.fecha_vencimiento, form.instance.nombre, request=self.request)

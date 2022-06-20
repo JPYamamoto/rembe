@@ -1,11 +1,9 @@
 from google.auth.transport.requests import Request
 import google_auth_oauthlib.flow
-from google_auth_oauthlib.flow import InstalledAppFlow
 from google.oauth2.credentials import Credentials
 import googleapiclient.discovery
 
 from django.conf import settings
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from datetime import timedelta
 
@@ -97,7 +95,7 @@ def fetch_token(request):
     creds = flow.credentials
     token = Token(token=creds.token, refresh_token=creds.refresh_token, user=request.user)
     token.save()
-    return redirect('https://rembe.azurewebsites.net/tarjetas/create/')
+    return redirect('https://rembe.azurewebsites.net/tarjetas/')
     
     
 
