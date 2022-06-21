@@ -1,15 +1,19 @@
 :root {
     --border-chungus: 3px;
-    --bg-color: white;
+    --bg-color: #F5EFED;
     --primary-color: rgb(131, 15, 40);
-    --secondary-color: rgba(169, 169, 169, 0.95);
+    --secondary-color: rgb(157, 156, 156);
     --dark-text-color: black;
-    --clear-text-color: white;
+    --clear-text-color: rgb(243, 233, 233);
+}
+
+* {
+    background-color: var(--bg-color);
 }
 
 .MenuSuperior {
     margin: 0;
-    background: rgb(235, 235, 235, 0.5);
+    background-color: var(--clear-text-color);
     display: flex;
     min-width: 100%;
     align-items: center;
@@ -17,10 +21,12 @@
 
 .Marca {
     display: inline-block;
+    background-color: var(--clear-text-color);
 }
 
 img.RembeLogoMenu {
     display: inline-block;
+    background-color: var(--clear-text-color);
     width: 7%;
 }
 
@@ -30,6 +36,7 @@ h1 {
 
 h2.NombreMarca {
     display: inline-block;
+    background-color: var(--clear-text-color);
     text-align: center;
     margin-bottom: 2vh;
     color: var(--primary-color);
@@ -40,6 +47,7 @@ h2.NombreMarca {
 
 ul.Opciones {
     display: flex;
+    background-color: var(--clear-text-color);
     margin-left: auto;
     margin-right: 2vw;
 }
@@ -50,10 +58,12 @@ li.nav {
 }
 
 .Marca a {
+    background-color: var(--clear-text-color);
     text-decoration: none;
 }
 
 .nav a {
+    background-color: var(--clear-text-color);
     white-space: nowrap;
     text-decoration: none;
     border-bottom: var(--border-chungus) solid var(--secondary-color);

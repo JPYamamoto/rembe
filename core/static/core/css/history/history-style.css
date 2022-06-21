@@ -2,7 +2,7 @@ a.version {
     display: block;
     padding: 1em;
     color: var(--text-color);
-    background-color: var(--contrast-color);
+    /* background-color: var(--contrast-color); */
     border-radius: 1em;
     border-bottom: .2em solid var(--highlight-color);
     text-decoration: none;
@@ -12,4 +12,9 @@ a.version:hover,
 a.version:focus {
     background-color: var(--highlight-color);
     color: var(--bg-color);
+}
+
+.space {
+    display: block;
+    margin-top: 5vh;
 }

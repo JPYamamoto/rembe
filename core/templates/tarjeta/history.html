@@ -8,6 +8,7 @@
 {%endblock%}
 
 {% block content %}
+    <div class="space"> </div>
     {% for version in object_list %}
         <a class="version" href="{% url 'tarjetas:view' version.id %}?version={{ version.history_id }}">Versión {{ forloop.revcounter }} (Commit ID #{{ version.history_id }}): {{ version.fecha_modificacion }}</a>
     {% endfor %}
