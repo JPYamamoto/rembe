@@ -1,9 +1,13 @@
 :root {
-    --bg-color: white;
+    --bg-color: #F5EFED;
     --primary-color: rgb(131, 15, 40);
     --secondary-color: rgba(169, 169, 169, 0.95);
     --dark-text-color: black;
     --clear-text-color: white;
+}
+
+* {
+    background-color: var(--bg-color);
 }
 
 .Login_page {
@@ -15,15 +19,15 @@
 
 img.Rembe_Logo {
     display: block;
-    margin: 0 auto;
+    margin: 5vh auto;
     width: 25vh;
 }
 
 h1.Welcome_msg {
     margin-top: 0;
-    margin-bottom: 2vh;
+    margin-bottom: 10vh;
     text-align: center;
-    font-size: 5vh;
+    font-size: 7vh;
 }
 
 button.Login {
@@ -45,7 +49,7 @@ hr.Separador {
 }
 
 .acceso {
-    margin-top: 5vh;
+    margin-top: 10vh;
 }
 
 img.Ciencias_Logo {

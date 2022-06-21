@@ -51,6 +51,18 @@ iframe {
     display: none;
 }
 
+pre {
+    margin-left: 4em;
+}
+
+a {
+    color: var(--highlight-color);
+}
+
+a:hover {
+    color: var(--main-color);
+}
+
 
 /* Menu de navegacion */
 
@@ -115,16 +127,13 @@ iframe {
         padding: 0 !important;
         margin: 0 !important;
     }
-
     h1 {
         padding: 0 !important;
         margin: 0 !important;
     }
-
     nav {
         display: none !important;
     }
-
     .card {
         padding: 5px;
         margin-top: 0.2rem;
@@ -132,16 +141,13 @@ iframe {
         display: flexbox;
         box-shadow: none;
     }
-
     .colum-content {
         max-width: 100% !important;
         min-height: auto !important;
     }
-
     .change-content {
         display: none;
     }
-
     .content .back {
         display: block;
     }

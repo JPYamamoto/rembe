@@ -1,8 +1,13 @@
 {% extends "base/base.html" %}
+{% load static %}
 {% block head_title %}Lo sentimos mucho{% endblock %}
 
+{% block extra_header %}
+<link rel="stylesheet" type="text/css"  href= "{% static 'core/css/error/error_style.css' %}">
+{% endblock %}
 
 {% block content %}
 <h1>Ha ocurrido un error: {{error_type}}</h1>
 <p>{{mensaje}}</p>
+<img class="cheems" src = {%static 'images/error/cheems_error.png' %}
 {% endblock %}
