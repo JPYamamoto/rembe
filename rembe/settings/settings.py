@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+import sys
 import environ
 
 env = environ.Env(DEBUG=(bool, True))
@@ -184,5 +186,16 @@ if DEBUG:
 else:
     from rembe.settings.prod import *
 
+DATABASES['TEST'] = {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+}
+
 if (ENV_ALLOWED_HOSTS):
     ALLOWED_HOSTS += ENV_ALLOWED_HOSTS
+
+if 'test' in sys.argv:
+    DATABASES['default'] = DATABASES['TEST']
+
+    if 'keepdb' in sys.argv:
+        DATABASES['default']['TEST']['NAME'] = '/dev/shm/rembe.test.db.sqlite3'
